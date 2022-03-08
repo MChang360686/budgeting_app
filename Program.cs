@@ -9,7 +9,7 @@ namespace Program
 
     class budget{
         public static Double divideDays(int time, int money){
-            Double cpd = money/time;
+            Double cpd = money * time;
             return cpd;
         }
 
@@ -33,8 +33,6 @@ namespace Program
             int time = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Days (1), Months(2), Years(3)?");
             int timeUnits = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("How much Currency do you wish to allocate?");
-            int money = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("How much are your Food Costs per diem?");
             int foodOverhead = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("How much are your Medical Bills per diem?");
@@ -48,17 +46,20 @@ namespace Program
             Console.WriteLine("How much Pocket money do you want per time unit per diem?");
             int pocketMoney = Convert.ToInt32(Console.ReadLine());
             int totalCost = foodOverhead + medicalOverhead + transportationOverhead 
-            + rentOverhead + otherOverhead;
+            + rentOverhead + otherOverhead + pocketMoney;
 
             if(timeUnits == 1){
                 Double costPerDay = budget.divideDays(time, totalCost);
-                Console.WriteLine("Your budget is " + costPerDay + " per day");
+                Console.WriteLine("For a budget of " + totalCost + " per day over a period of " 
+                + time + " days You would need to earn " + costPerDay);
             }else if(timeUnits == 2){
                 Double costPerMonth = budget.divideMonths(time, totalCost);
-                Console.WriteLine("Your budget is " + costPerMonth + " per month");
+                Console.WriteLine("For a budget of " + totalCost + " per day over a period of " 
+                + time + " months You would need to earn " + costPerMonth);
             }else if(timeUnits == 3){
                 Double costPerYear = budget.divideYears(time, totalCost);
-                Console.WriteLine("Your budget is " + costPerYear + " per year");
+                Console.WriteLine("For a budget of " + totalCost + " per day over a period of " 
+                + time + " years You would need to earn " + costPerYear);
             }
 
         }
