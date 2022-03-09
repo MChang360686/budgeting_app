@@ -8,18 +8,18 @@ namespace Program
     //to live
 
     class budget{
-        public static Double divideDays(int time, int money){
+        public static Double days(int time, int money){
             Double cpd = money * time;
             return cpd;
         }
 
-        public static Double divideMonths(int time, int money){
-            Double cpm = divideDays(time, money) * 30;
+        public static Double months(int time, int money){
+            Double cpm = days(time, money) * 30;
             return cpm;
         }
 
-        public static Double divideYears(int time, int money){
-            Double cpy = divideMonths(time, money) * 12;
+        public static Double years(int time, int money){
+            Double cpy = months(time, money) * 12;
             return cpy;
         }
     }
@@ -49,15 +49,15 @@ namespace Program
             + rentOverhead + otherOverhead + pocketMoney;
 
             if(timeUnits == 1){
-                Double costPerDay = budget.divideDays(time, totalCost);
+                Double costPerDay = budget.days(time, totalCost);
                 Console.WriteLine("For a budget of " + totalCost + " per day over a period of " 
                 + time + " days You would need to earn " + costPerDay);
             }else if(timeUnits == 2){
-                Double costPerMonth = budget.divideMonths(time, totalCost);
+                Double costPerMonth = budget.months(time, totalCost);
                 Console.WriteLine("For a budget of " + totalCost + " per day over a period of " 
                 + time + " months You would need to earn " + costPerMonth);
             }else if(timeUnits == 3){
-                Double costPerYear = budget.divideYears(time, totalCost);
+                Double costPerYear = budget.years(time, totalCost);
                 Console.WriteLine("For a budget of " + totalCost + " per day over a period of " 
                 + time + " years You would need to earn " + costPerYear);
             }
